@@ -1,0 +1,36 @@
+/*
+ *
+ * Automatically generated file; DO NOT EDIT.
+ * K230 SDK Configuration
+ *
+ */
+#define CONFIG_LINUX_DTB "k230_canmv_dongshanpi"
+#define CONFIG_BUILDROOT_DEFCONFIG "k230_evb"
+#define CONFIG_MEM_MMZ_BASE 0x10000000
+#define CONFIG_GEN_IMG_SCRIPT "board/common/gen_image_script/gen_image.sh"
+#define CONFIG_MEM_LINUX_SYS_BASE 0x08000000
+#define CONFIG_MEM_TOTAL_SIZE 0x40000000
+#define CONFIG_TOOLCHAIN_PATH_RTT "/opt/toolchain/riscv64-linux-musleabi_for_x86_64-pc-linux-gnu/bin"
+#define CONFIG_MEM_MMZ_SIZE 0x0FC00000
+#define CONFIG_SDCAED 1
+#define CONFIG_TOOLCHAIN_PREFIX_LINUX "riscv64-unknown-linux-gnu-"
+#define CONFIG_LINUX_RUN_CORE_ID 0
+#define CONFIG_RTTHREAD_DEFCONFIG ""
+#define CONFIG_TOOLCHAIN_PATH_LINUX "/opt/toolchain/Xuantie-900-gcc-linux-5.10.4-glibc-x86_64-V2.6.0/bin"
+#define CONFIG_MEM_BOUNDARY_RESERVED_SIZE 0x00001000
+#define CONFIG_MEM_LINUX_SYS_SIZE 0x08000000
+#define CONFIG_RTT_CONSOLE_ID 3
+#define CONFIG_LINUX_DEFCONFIG "k230_canmv_dongshanpi"
+#define CONFIG_TOOLCHAIN_PREFIX_RTT "riscv64-unknown-linux-musl-"
+#define CONFIG_BOARD_K230_CANMV_DONGSHANPI 1
+#define CONFIG_SUPPORT_LINUX 1
+#define CONFIG_MEM_RTT_SYS_BASE 0x00200000
+#define CONFIG_MEM_RTT_SYS_SIZE 0x07E00000
+#define CONFIG_UBOOT_DEFCONFIG "k230_canmv_dongshanpi"
+#define CONFIG_CANAAN_SITE_IMG_NAME_PREFIX ""
+#define CONFIG_MEM_IPCM_BASE 0x00100000
+#define CONFIG_BUILD_RELEASE_VER 1
+#define CONFIG_RTL8188FU 1
+#define CONFIG_SUPPORT_RTSMART 1
+#define CONFIG_MEM_IPCM_SIZE 0x00100000
+#define CONFIG_BOARD_NAME "k230_evb"
