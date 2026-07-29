@@ -4,6 +4,13 @@
 
 K230 板端 C++ 骰子猜拳游戏。摄像头采集画面 → YOLO KPU 推理 → 识别石头/剪刀/布 → 结果叠加显示。
 
+## 板端环境
+
+- **硬件**: 01Studio CanMV-K230
+- **固件镜像**: `CanMV-K230_01studio_linux_v1.2_nncase_v2.11.0_2dd270f7.img.gz`
+- **系统**: Linux (RISC-V 64-bit, glibc)
+- **nncase**: v2.11.0
+
 ## 项目结构
 
 ```
