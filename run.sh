@@ -15,3 +15,15 @@ fi
 export LD_LIBRARY_PATH=/usr/lib/python3.13/site-packages/nncaseruntime:$LD_LIBRARY_PATH
 
 exec ./dice_game.elf "$KMODEL" "$@"
+
+
+# # 切 LCD
+# cp /boot/k230-canmv-01studio-lcd.dtb /boot/k.dtb && reboot
+
+# # 切 HDMI  
+# cp /boot/k230-canmv-01studio.dtb /boot/k.dtb && reboot
+
+# adb shell "killall dice_game.elf"
+# adb shell "chmod -x /etc/init.d/S40network && reboot"
+
+# chmod -x /etc/init.d/S40k230_canmv_01studio_defconfig

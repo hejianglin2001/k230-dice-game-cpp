@@ -24,7 +24,6 @@ dice_game/
 │   ├── opencv/                 #   OpenCV 交叉编译库 (symlink)
 │   ├── mpp/                    #   MPP 静态库 (sys.a)
 │   └── v4l2/                   #   板端 .so 文件
-├── micopyton_project/          # 旧 MicroPython 版本 (参考)
 └── src/
     ├── main.cc                 # 入口 (12 行)
     ├── config.h                # 全局常量 + 状态枚举

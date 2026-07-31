@@ -40,6 +40,7 @@ static uint32_t (*p_lv_color_make)(uint8_t,uint8_t,uint8_t);
 static int32_t  (*p_lv_timer_handler)(void);
 static void*  (*p_lv_timer_create)(void(*)(void*),uint32_t,void*);
 static void   (*p_lv_tick_inc)(uint32_t);
+static void   (*p_lv_sysmon_hide_performance)(void);
 
 #define DL(fn) p_##fn = reinterpret_cast<decltype(p_##fn)>(dlsym(hdl, #fn))
 
@@ -83,10 +84,12 @@ bool LvglDL::init(int w, int h) {
     DL(lv_image_create); DL(lv_image_set_src);
     DL(lv_screen_load); DL(lv_color_hex); DL(lv_color_make);
     DL(lv_timer_handler); DL(lv_timer_create); DL(lv_tick_inc);
+    DL(lv_sysmon_hide_performance);
 
     p_lv_init();
     auto* disp = p_lv_display_create(w, h);
     p_lv_display_set_default(disp);
+    p_lv_sysmon_hide_performance();  // 关掉右下角 FPS/CPU 监视器
 
     buf1_.resize(w*h*4); buf2_.resize(w*h*4); osd_buf_.resize(w*h*4);
     std::memset(buf1_.data(),0,buf1_.size()); std::memset(buf2_.data(),0,buf2_.size()); std::memset(osd_buf_.data(),0,osd_buf_.size());

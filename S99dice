@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$1" in
+  start)
+    cd /root/app/dice_game
+    ./run.sh > /tmp/dice.log 2>&1 &
+    ;;
+  stop)
+    killall dice_game.elf 2>/dev/null
+    ;;
+esac

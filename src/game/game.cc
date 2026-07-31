@@ -28,7 +28,10 @@ GameController::~GameController() = default;
 bool GameController::init() {
     // ── 打开 DRM 显示器 ──
     disp_.reset(new SimpleDisplay());
-    if (!disp_->open()) return false;  // 打不开 /dev/dri/card0 就退出
+    // 自动检测: 先试 lcd, 失败试 hdmi
+    bool ok = disp_->open("lcd");
+    if (!ok) { std::cout << "[DISP] lcd fail, try hdmi..." << std::endl; ok = disp_->open("hdmi"); }
+    if (!ok) return false;
 
     // ── 创建 LVGL UI ──
     // DRM 输出是 480x800 竖屏, LVGL 内部按 800x480 横屏设计
@@ -261,9 +264,9 @@ void GameController::draw_overlay(void *frame) {
                         float a = p[3] / 255.f;             // alpha (0~1)
                         auto &d = roi.at<cv::Vec3b>(y, x);  // 目标 BGR 像素
                         // dst = src*(1-alpha) + png*alpha
-                        d[0] = d[0] * (1-a) + p[0] * a;    // B
+                        d[0] = d[0] * (1-a) + p[2] * a;    // B
                         d[1] = d[1] * (1-a) + p[1] * a;    // G
-                        d[2] = d[2] * (1-a) + p[2] * a;    // R
+                        d[2] = d[2] * (1-a) + p[0] * a;    // R
                     }
             }
         }

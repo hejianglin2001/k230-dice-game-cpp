@@ -55,13 +55,20 @@ if [ "$1" = "deploy" ] || [ "$1" = "run" ]; then
     adb shell "mkdir -p ${BOARD_DIR}"
     adb push "${ELF}" "${BOARD_ELF}"
     adb push "${PROJECT_DIR}/run.sh" "${BOARD_DIR}/run.sh"
+    adb push "${PROJECT_DIR}/S99dice" /etc/init.d/S99dice
     adb shell "chmod +x ${BOARD_DIR}/run.sh ${BOARD_ELF}"
+    adb shell "chmod +x /etc/init.d/S99dice"
+    # 推送 assets (首次)
+    adb shell "mkdir -p ${BOARD_DIR}/assets/ui/star"
+    adb push assets/ui/*.png ${BOARD_DIR}/assets/ui/ 2>/dev/null
+    adb push assets/ui/star/*.png ${BOARD_DIR}/assets/ui/star/ 2>/dev/null
     if [ -f "${KMODEL_SRC}" ]; then
         adb push "${KMODEL_SRC}" "${KMODEL_DST}"
         echo "  kmodel: ${KMODEL_DST}"
     else
         echo "  (kmodel not found at ${KMODEL_SRC}, skipped)"
     fi
+    adb shell sync
     echo "OK: ${BOARD_ELF}"
 fi
 

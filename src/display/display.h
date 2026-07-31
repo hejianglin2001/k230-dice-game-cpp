@@ -10,7 +10,7 @@
 
 class SimpleDisplay {
 public:
-    bool open(int fb_id = 0);
+    bool open(const char* mode = "lcd"); // lcd/hdmi
 
     // 显示摄像头帧 (BGR3 1280x720 → 旋转+缩放 → 竖屏 DRM)
     void show_frame(uint8_t *bgr888, int w, int h);
@@ -28,7 +28,9 @@ public:
     void close();
     ~SimpleDisplay();
 
-    int width = 0, height = 0;    // DRM 帧缓冲尺寸 (480x800)
+    int width = 0, height = 0;    // DRM 帧缓冲尺寸
+    bool portrait = false;         // 竖屏需旋转, 横屏不旋转
+    bool is_hdmi_ = false;         // HDMI 模式不用 PAGE_FLIP
 
 private:  // 与 display.cc 变量名保持一致
     int fd = -1;                  // /dev/dri/card0 文件描述符
